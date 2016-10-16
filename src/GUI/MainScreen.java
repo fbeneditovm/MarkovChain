@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
 /**
@@ -43,6 +44,8 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btCalculate = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +65,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTableInitialVector.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableInitialVector.setShowGrid(true);
         jScrollPane2.setViewportView(jTableInitialVector);
 
@@ -123,27 +127,33 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTableResult);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
-        jLabel1.setText("Transition Matrix:");
+        jLabel1.setText("Press (Tab or Enter) after you input the Matrix.");
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
-        jLabel2.setText("Initial Probability Vector:");
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel2.setText("Press (Tab or Enter) after you input the Vector.");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
         jLabel3.setText("Result:");
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setText("Number of iterations:");
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setText("Matrix Size:");
 
-        btCalculate.setFont(new java.awt.Font("Lucida Grande", 1, 15)); // NOI18N
+        btCalculate.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         btCalculate.setText("Calculate");
         btCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCalculateActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 15)); // NOI18N
+        jLabel6.setText("Initial Probability Vector:");
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel7.setText("Transition Matrix:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,15 +162,9 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
@@ -170,40 +174,57 @@ public class MainScreen extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jSpinnerNIterations, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCalculate)))
+                        .addComponent(btCalculate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jSpinnerMatrizSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jSpinnerNIterations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCalculate))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(84, 84, 84))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * The probability calculation is done in this method
+     */
     private void btCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalculateActionPerformed
         int i, j;
-        
         int matrixSize = (int)jSpinnerMatrizSize.getValue();
         int nIterations = (int)jSpinnerNIterations.getValue();
         double[] initialVector = new double[matrixSize];
@@ -211,30 +232,95 @@ public class MainScreen extends javax.swing.JFrame {
         
         TableModel vectorTModel = jTableInitialVector.getModel();
         TableModel matrixTModel = jTableMatrix.getModel();
+        TableModel resultTModel = jTableResult.getModel();
         
         for(i=0; i<matrixSize; i++){
-            initialVector[i] = (double)vectorTModel.getValueAt(0, i);
-            System.out.println(""+initialVector[i]);
+            try{
+                initialVector[i] = (double)vectorTModel.getValueAt(0, i);
+            }catch(NullPointerException e){
+                JOptionPane.showMessageDialog(null, "You either set the Matrix Size wrong or did not "
+                        + "press (Tab or Enter) after you filled the Vector."
+                        + "Please check your input and try again!");
+                break;
+            }
             for(j=0; j<matrixSize; j++){
-                matrix[i][j] = (double)matrixTModel.getValueAt(i, j);
+                try{
+                    matrix[i][j] = (double)matrixTModel.getValueAt(i, j);
+                }catch(NullPointerException e){
+                    JOptionPane.showMessageDialog(null, "You either set the Matrix Size wrong or did not "
+                        + "press (Tab or Enter) after you filled the Matrix."
+                        + "Please check your input and try again!");
+                    break;
+                }
             }
         }
+        
+        /**
+         * Uncomment the next part to test input
+        */
+        /*
         System.out.println("Matrix Size: "+matrixSize);
         System.out.println("Number or Iteractions: "+nIterations);
         System.out.println("Initial Vector:\n");
         for(i=0; i<matrixSize; i++)
-            System.out.print(initialVector[i]);
+            System.out.print(initialVector[i]+", ");
         System.out.println("\nTransition Matrix:");
         for(i=0; i<matrixSize; i++){
             for(j=0; j<matrixSize; j++){
-                System.out.print(matrix[i][j]);
+                System.out.print(matrix[i][j]+", ");
             }
             System.out.println("");
         }
+        */
         
+        for(i=0; i<(nIterations-1); i++){
+            matrix = multiplyMatrices(matrix, matrix);
+            
+            System.out.println("Matriz"+(i+2)+":\n");
+            /**
+             * Uncomment the next part to see the
+             * Transition Matrix after each interaction
+             */
+            /*
+            for(j=0; j<matrixSize; j++){
+                for(int k=0; k<matrixSize; k++){
+                    System.out.print(matrix[j][k]+", ");
+                }
+            System.out.println("");
+            }
+            */
+        }
+        
+        double[][] aux = new double[1][matrixSize];
+        aux[0] = initialVector;
+        
+        aux = multiplyMatrices(aux, matrix);
+        
+        for(i=0; i<matrixSize; i++)
+            resultTModel.setValueAt(aux[0][i], 0, i);
         
     }//GEN-LAST:event_btCalculateActionPerformed
-
+    /**
+     * A simple matrices multiplication method
+     * @param a the first matrix
+     * @param b the second matrix
+     * @return the matrix resultant of the multiplication
+     */
+    public double[][] multiplyMatrices(double[][] a, double[][] b){
+        
+        int m1 = a.length;
+        int n1 = a[0].length;
+        int m2 = b.length;
+        int n2 = b[0].length;
+        if (n1 != m2) System.out.println("Illegal matrix dimensions.");
+        double[][] c = new double[m1][n2];
+        for (int i = 0; i < m1; i++)
+            for (int j = 0; j < n2; j++)
+                for (int k = 0; k < n1; k++)
+                    c[i][j] += a[i][k] * b[k][j];
+        return c;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -246,7 +332,7 @@ public class MainScreen extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -277,6 +363,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
