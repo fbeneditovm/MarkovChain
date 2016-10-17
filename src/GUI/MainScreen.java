@@ -210,19 +210,19 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel1)
                     .addComponent(btCalculate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
         );
 
         pack();
@@ -288,8 +288,15 @@ public class MainScreen extends javax.swing.JFrame {
          * Calculation of the Transition Matrix after
          * nIterations iterations
          */
+        BigDecimal[][] matrixN = new BigDecimal[matrixSize][matrixSize];
+        for(i=0; i<matrixSize; i++)
+            System.arraycopy(matrix[i], 0, matrixN[i], 0, matrixSize);
+        
         for(i=0; i<(nIterations-1); i++){
-            matrix = multiplyMatrices(matrix, matrix);
+            
+            //GUARDAR A MATRIZ ORIGINAL E MULTIPLICAR A ATUAL POR ELA AO
+            //INVES DE MULTIPLICAR A ATUAL PELA ATUAL
+            matrixN = multiplyMatrices(matrixN, matrix);
             
             /**
              * Uncomment the next part to see the
@@ -298,7 +305,7 @@ public class MainScreen extends javax.swing.JFrame {
             System.out.println("Matrix"+(i+2)+":\n");
             for(j=0; j<matrixSize; j++){
                 for(int k=0; k<matrixSize; k++){
-                    System.out.print(matrix[j][k]+", ");
+                    System.out.print(matrixN[j][k]+", ");
                 }
             System.out.println("");
             }
@@ -310,7 +317,7 @@ public class MainScreen extends javax.swing.JFrame {
          */
         BigDecimal[][] aux = new BigDecimal[1][matrixSize];
         aux[0] = initialVector;
-        aux = multiplyMatrices(aux, matrix);
+        aux = multiplyMatrices(aux, matrixN);
         
         /**
          * Showing the result on the screen
@@ -336,7 +343,6 @@ public class MainScreen extends javax.swing.JFrame {
         if (n1 != m2) System.out.println("Illegal matrix dimensions.");
         
         BigDecimal[][] c = new BigDecimal[m1][n2];
-                
         for (i = 0; i < m1; i++){
             for (j = 0; j < n2; j++){
                 c[i][j] = new BigDecimal("0");
