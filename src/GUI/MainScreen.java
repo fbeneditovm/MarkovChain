@@ -232,12 +232,20 @@ public class MainScreen extends javax.swing.JFrame {
      */
     private void btCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalculateActionPerformed
         int i, j;
+        int matrixSize, nIterations;
         
         /**
          * Getting the user input
          */
-        int matrixSize = (int)jSpinnerMatrizSize.getValue();
-        int nIterations = (int)jSpinnerNIterations.getValue();
+        
+        matrixSize = (int)jSpinnerMatrizSize.getValue();
+        nIterations = (int)jSpinnerNIterations.getValue();
+        if((matrixSize == 0)||(nIterations==0)){
+            JOptionPane.showMessageDialog(null, "The Matrix Size and the Number of Iterations"
+                    + "can not be zero!");
+            return;
+        }
+        
         BigDecimal[] initialVector = new BigDecimal[matrixSize];
         BigDecimal[][] matrix = new BigDecimal[matrixSize][matrixSize];
         
@@ -247,12 +255,16 @@ public class MainScreen extends javax.swing.JFrame {
         
         for(i=0; i<matrixSize; i++){
             try{
+                
                 initialVector[i] = new BigDecimal((String)vectorTModel.getValueAt(0, i));
             }catch(NullPointerException e){
                 JOptionPane.showMessageDialog(null, "You either set the Matrix Size wrong or did not "
                         + "press (Tab or Enter) after you filled the Vector."
                         + "Please check your input and try again!");
                 break;
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "You typed an invalid value in the Vector."
+                        + "Please check your input and try again!");
             }
             for(j=0; j<matrixSize; j++){
                 try{
@@ -262,7 +274,10 @@ public class MainScreen extends javax.swing.JFrame {
                         + "press (Tab or Enter) after you filled the Matrix."
                         + "Please check your input and try again!");
                     break;
-                }
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "You typed an invalid value in the Matrix."
+                        + "Please check your input and try again!");
+            }
             }
         }
         
